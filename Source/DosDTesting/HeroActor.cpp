@@ -39,6 +39,14 @@ void AHeroActor::BeginPlay()
 void AHeroActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	const FVector movement = ConsumeMovementInputVector();
+	UE_LOG(LogTemp, Warning, TEXT("Mover Adelante: %f %f %f"), movement.X, movement.Y, movement.Z);
+	const FVector actualLocation = GetActorLocation();
+	const FVector newLocation = actualLocation + (movement * 10.0f);
+	SetActorLocation(newLocation);
+
+	
 	
 }
 
@@ -54,10 +62,11 @@ void AHeroActor::avanzar(float AxisValue)
 	{
 		
 		UE_LOG(LogTemp, Warning, TEXT("Mover Adelante: %f"), AxisValue);
-		//FVector arrowVector(1.f, 0.f, 0.f);
-		//GetArrowComponent()->GetComponentTransform().TransformPosition(OUT arrowVector);
+		FVector arrowVector(1.f, 0.f, 0.f);
+		GetArrowComponent()->GetComponentTransform().TransformPosition(OUT arrowVector);
 		//UE_LOG(LogTemp, Warning, TEXT("arrowVector: %f %f %f"), arrowVector.X, arrowVector.Y, arrowVector.Z);
-		AddMovementInput(GetActorRightVector(), AxisValue);
+		
+		AddMovementInput(arrowVector, AxisValue);
 	}
 	
 }
