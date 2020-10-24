@@ -5,5 +5,5 @@
 
 ATestPlayerController::ATestPlayerController(const FObjectInitializer& ObjectInitializer)
 {
-	
+	//AutoReceiveInput = EAutoReceiveInput::Player1;
 }

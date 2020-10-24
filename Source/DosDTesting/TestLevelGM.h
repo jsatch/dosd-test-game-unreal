@@ -15,4 +15,8 @@ class DOSDTESTING_API ATestLevelGM : public ADosDTestingGameModeBase
 	GENERATED_BODY()
 public:
 	ATestLevelGM();
+
+	void BeginPlay() override;
+
+	void avanzar(float AxisValue);
 };
